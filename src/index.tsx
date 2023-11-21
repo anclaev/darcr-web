@@ -21,4 +21,4 @@ root.render(
   </StrictMode>,
 )
 
-swRegistration.unregister()
+swRegistration.register()
