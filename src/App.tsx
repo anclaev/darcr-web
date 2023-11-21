@@ -1,14 +1,16 @@
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+
+import Dashboard from '@pages/dash'
+import Home from '@pages/home'
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload. Darcr.
-        </p>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route index element={<Home />} />
+        <Route path="*" element={<Dashboard />} />
+      </Routes>
+    </Router>
   )
 }
 
