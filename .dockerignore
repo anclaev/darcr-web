@@ -1,8 +1,4 @@
 node_modules
-dist
-build
-coverage
-docker
-.yarn
-.vsocde
-.dockerignore
+.prettierrc
+README.md
+yarn.lock

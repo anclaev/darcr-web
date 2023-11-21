@@ -1,8 +1,10 @@
 import { createRoot } from 'react-dom/client'
+import { Provider } from 'react-redux'
 import { StrictMode } from 'react'
 
 import './index.css'
 
+import { store } from './store'
 import App from '@/App'
 
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
@@ -12,7 +14,9 @@ const root = createRoot(document.getElementById('root') as HTMLElement)
 
 root.render(
   <StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </StrictMode>,
 )
 
