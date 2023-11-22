@@ -4,6 +4,8 @@ import { UserState, RootState, UserSigninPayload } from '@/types/store'
 
 export const initialState: UserState = {
   id: null,
+  telegramId: null,
+  username: null,
 }
 
 export const userSlice = createSlice({

@@ -1,5 +1,6 @@
 import { BrowserRouter } from 'react-router-dom'
 import { createRoot } from 'react-dom/client'
+import { CookiesProvider } from 'react-cookie'
 import { Provider } from 'react-redux'
 import { StrictMode } from 'react'
 
@@ -16,14 +17,16 @@ const root = createRoot(document.getElementById('root') as HTMLElement)
 
 root.render(
   <StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <AuthProvider>
-          <App />
-          <GlobalStyles />
-        </AuthProvider>
-      </BrowserRouter>
-    </Provider>
+    <CookiesProvider>
+      <Provider store={store}>
+        <BrowserRouter>
+          <AuthProvider>
+            <App />
+            <GlobalStyles />
+          </AuthProvider>
+        </BrowserRouter>
+      </Provider>
+    </CookiesProvider>
   </StrictMode>,
 )
 

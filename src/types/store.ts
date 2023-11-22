@@ -6,6 +6,8 @@ export interface AppState {
 
 export interface UserState {
   id: number | null
+  telegramId: number | null
+  username: string | null
 }
 
 export type RootState = ReturnType<typeof store.getState>
