@@ -1,10 +1,11 @@
+import { signIn } from '@/utils/sign-in'
+
 import {
   StyledHome,
   StyledContainer,
   StyledWelcome,
   StyledWelcomeSignin,
   StyledLogo,
-  // StyledSigninButton,
 } from './styles'
 
 import TelegramLoginButton from 'telegram-login-button'
@@ -25,7 +26,7 @@ const Home: React.FC = () => {
             </StyledSigninButton> */}
             <TelegramLoginButton
               botName="DarcrBot"
-              dataOnauth={(user) => console.log(user)}
+              dataOnauth={(data) => signIn(data)}
             />
           </StyledWelcomeSignin>
         </div>
