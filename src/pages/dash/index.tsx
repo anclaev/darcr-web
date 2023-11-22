@@ -1,5 +1,7 @@
+import Styled from './styles'
+
 const Dashboard: React.FC = () => {
-  return <main>Dashboard page</main>
+  return <Styled>Dashboard page</Styled>
 }
 
 export default Dashboard
