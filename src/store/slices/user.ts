@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { UserState, RootState, UserSigninPayload } from '@/types/store'
 
-const initialState: UserState = {
+export const initialState: UserState = {
   id: null,
 }
 

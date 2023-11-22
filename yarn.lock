@@ -1124,7 +1124,7 @@
   resolved "https://registry.yarnpkg.com/@babel/regjsgen/-/regjsgen-0.8.0.tgz#f0ba69b075e1f05fb2825b7fad991e7adbb18310"
   integrity sha512-x/rqGMdzj+fWZvCOYForTghzbtqPDZ5gPwaoNGHdgDfF2QA/XZbCBp4Moo5scrkAMPhB7z26XM/AaHuIJdgauA==
 
-"@babel/runtime@^7.11.2", "@babel/runtime@^7.12.1", "@babel/runtime@^7.12.5", "@babel/runtime@^7.16.3", "@babel/runtime@^7.18.3", "@babel/runtime@^7.23.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
+"@babel/runtime@^7.11.2", "@babel/runtime@^7.12.1", "@babel/runtime@^7.12.5", "@babel/runtime@^7.16.3", "@babel/runtime@^7.18.3", "@babel/runtime@^7.23.2", "@babel/runtime@^7.6.0", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
   version "7.23.4"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.23.4.tgz#36fa1d2b36db873d25ec631dcc4923fdc1cf2e2e"
   integrity sha512-2Yv65nlWnWlSpe3fXEyX5i7fx5kIKo4Qbcj+hMO0odwaneFjfXw5fdum+4yL20O0QiaHpia0cYQ9xpNMqrBwHg==
@@ -4224,6 +4224,11 @@ emojis-list@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/emojis-list/-/emojis-list-3.0.0.tgz#5570662046ad29e2e916e71aae260abdff4f6a78"
   integrity sha512-/kyM18EfinwXZbno9FyUGeFh87KC8HRQBQGildHZbEuRyWFOmv1U10o9BBp8XVZDVNNuQKyIGIu5ZYAAXJ0V2Q==
+
+emotion-normalize@^11.0.1:
+  version "11.0.1"
+  resolved "https://registry.yarnpkg.com/emotion-normalize/-/emotion-normalize-11.0.1.tgz#266e6b93ef9b3ff972a9615d83ab0a7483ac7af9"
+  integrity sha512-68+TdnChNbELbOVtA2oOdSc9W40KPH4dKYdXgk2KfkuGu+qK7glVVO4h5Q+hoAf2JqJfTV55wPeBMPuun+3fVA==
 
 encodeurl@~1.0.2:
   version "1.0.2"
@@ -7924,7 +7929,7 @@ prompts@^2.0.1, prompts@^2.4.2:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.8.1:
+prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -9114,6 +9119,14 @@ tapable@^2.0.0, tapable@^2.1.1, tapable@^2.2.0:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/tapable/-/tapable-2.2.1.tgz#1967a73ef4060a82f12ab96af86d52fdb76eeca0"
   integrity sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==
+
+telegram-login-button@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/telegram-login-button/-/telegram-login-button-0.1.0.tgz#836ca74975f5ad48d4bd666056747c75d0041d51"
+  integrity sha512-u8qaHmzHymaAvzisqddlUckKUS4Zo85z+pKZrrdLyRzVqmV4FHoDrCCIc7pokDlwVMSV/WTiyMMhRzG2dEnBpg==
+  dependencies:
+    "@babel/runtime" "^7.6.0"
+    prop-types "^15.7.2"
 
 temp-dir@^2.0.0:
   version "2.0.0"
