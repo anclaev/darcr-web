@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router'
 import { Component } from '@angular/core'
 
 import { CoreModule } from './core/core.module'
+
 import { environment } from 'src/environments/environment'
 
 @Component({
