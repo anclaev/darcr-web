@@ -50,4 +50,4 @@ COPY --from=builder /web-client/dist/darcr-web/browser .
 
 EXPOSE 80
 
-# ENTRYPOINT [ "sh", "/usr/local/bin/start-nginx.sh" ]
+ENTRYPOINT [ "sh", "/usr/local/bin/start-nginx.sh" ]
