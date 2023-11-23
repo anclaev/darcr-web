@@ -15,7 +15,7 @@ jobs:
       - name: Установка переменных окружения
         uses: 'finnp/create-file-action@master'
         env:
-          FILE_NAME: '/src/assets/config.json'
+          FILE_NAME: '/home/runner/work/darcr-web/darcr-web/src/assets/config.json'
           FILE_DATA: '${{ secrets.ENV }}'
 
       - name: Настройка QEMU
