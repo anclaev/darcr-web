@@ -11,7 +11,6 @@ WORKDIR /web-client
 
 COPY package.json ./
 
-RUN yarn global add @angular/cli
 RUN yarn install --silent
 
 # Stage 2: Сборка проекта
@@ -28,6 +27,7 @@ COPY --from=deps /web-client/node_modules ./node_modules
 
 RUN jq 'to_entries | map_values({ (.key) : ("$" + .key) }) | reduce .[] as $item ({}; . + $item)' ./src/assets/config.json > ./src/assets/config.tmp.json && mv ./src/assets/config.tmp.json ./src/assets/config.json
 
+RUN yarn global add @angular/cli
 RUN yarn build
 
 # Stage 3: Публикация проекта
