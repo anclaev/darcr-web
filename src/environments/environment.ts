@@ -1,6 +1,8 @@
 import { IEnvironment } from '@interfaces/env'
 
+import CONFIG from '../assets/config.json'
+
 export const environment: IEnvironment = {
-  API_URL: 'API_URL_ENV',
-  TELEGRAM_TOKEN: 'TELEGRAM_TOKEN_ENV',
+  API_URL: CONFIG.API_URL,
+  TELEGRAM_TOKEN: CONFIG.TELEGRAM_TOKEN,
 }
