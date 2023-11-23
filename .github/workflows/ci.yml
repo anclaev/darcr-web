@@ -11,6 +11,11 @@ jobs:
     steps:
       - name: Клонирование репозитория
         uses: actions/checkout@v3
+
+      - name: Установка переменных окружения
+        run: |
+          echo ${{ secrets.ENV }} >> /src/assets/config.json
+
       - name: Настройка QEMU
         uses: docker/setup-qemu-action@v3
       - name: Настройка Docker Buildx
