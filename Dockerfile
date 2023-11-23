@@ -40,7 +40,7 @@ ENV JSFOLDER=/usr/share/nginx/html/*.js
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-COPY start-nginx.sh /usr/local/bin/
+COPY start-nginx.sh usr/local/bin/
 
 RUN chmod +x /usr/local/bin/start-nginx.sh
 
@@ -50,4 +50,4 @@ COPY --from=builder /web-client/dist/darcr-web/browser .
 
 EXPOSE 80
 
-ENTRYPOINT [ "/usr/local/bin/start-nginx.sh" ]
+ENTRYPOINT [ "sh", "/usr/local/bin/start-nginx.sh" ]
