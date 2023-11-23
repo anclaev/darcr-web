@@ -6,7 +6,7 @@
 /out-tsc
 /bazel-out
 
-environments/
+environment.development.ts
 config.json
 
 # Node
