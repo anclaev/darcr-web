@@ -39,7 +39,7 @@ FROM nginx:1.23.1-alpine
 ENV JSFOLDER=/usr/share/nginx/html/*.js
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY ./start-nginx.sh /usr/bin/start-nginx.sh
+COPY start-nginx.sh /usr/bin/start-nginx.sh
 
 RUN chmod +x /usr/bin/start-nginx.sh
 
@@ -49,4 +49,4 @@ COPY --from=builder /web-client/dist/darcr-web/browser .
 
 EXPOSE 80
 
-ENTRYPOINT [ "/usr/bin/start-nginx.sh" ]
+ENTRYPOINT [ "start-nginx.sh" ]
