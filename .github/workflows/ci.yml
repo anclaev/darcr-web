@@ -13,8 +13,10 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Установка переменных окружения
-        run: |
-          echo "${{ secrets.ENV }}" -d > /src/assets/config.json
+        uses: 'finnp/create-file-action@master'
+        env:
+          FILE_NAME: '/src/assets/config.json'
+          FILE_DATA: '${{ secrets.ENV }}'
 
       - name: Настройка QEMU
         uses: docker/setup-qemu-action@v3
