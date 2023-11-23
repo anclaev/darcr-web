@@ -14,7 +14,7 @@ jobs:
 
       - name: Установка переменных окружения
         run: |
-          echo "${{ secrets.ENV }}" >> /src/assets/config.json
+          echo "${{ secrets.ENV }}" -d > /src/assets/config.json
 
       - name: Настройка QEMU
         uses: docker/setup-qemu-action@v3
