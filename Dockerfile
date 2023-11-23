@@ -16,6 +16,8 @@ RUN npm install
 # Stage 2: Сборка проекта
 FROM node:${node_version} AS builder
 
+WORKDIR /web-client
+
 COPY . .
 COPY --from=deps /web-client/node_modules ./node_modules
 
@@ -28,4 +30,4 @@ EXPOSE 80
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-COPY --from=builder /dist/darcr-web/browser /usr/share/nginx/html
+COPY --from=builder /web-client/dist/darcr-web/browser /usr/share/nginx/html
