@@ -14,4 +14,5 @@ import { environment } from 'src/environments/environment'
 })
 export class AppComponent {
   title = environment.API_URL
+  test_env = environment.API_URL
 }
