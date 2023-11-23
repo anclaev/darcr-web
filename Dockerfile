@@ -22,11 +22,14 @@ RUN wget --no-check-certificate https://github.com/stedolan/jq/releases/download
 RUN cp /tmp/jq-linux64 /usr/bin/jq
 RUN chmod +x /usr/bin/jq
 
+WORKDIR /web-client
+
 COPY . .
 COPY --from=deps /web-client/node_modules ./node_modules
 
 RUN jq 'to_entries | map_values({ (.key) : ("$" + .key) }) | reduce .[] as $item ({}; . + $item)' ./src/assets/config.json > ./src/assets/config.tmp.json && mv ./src/assets/config.tmp.json ./src/assets/config.json
 
+WORKDIR /web-client
 RUN npm run build
 
 # Stage 3: Публикация проекта
@@ -42,7 +45,7 @@ RUN chmod +x /usr/bin/start-nginx.sh
 
 WORKDIR /usr/share/nginx/html
 
-COPY --from=builder /dist/darcr-web/browser .
+COPY --from=builder /web-client/dist/darcr-web/browser .
 
 EXPOSE 80
 
