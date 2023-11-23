@@ -11,6 +11,7 @@ WORKDIR /web-client
 
 COPY package.json ./
 
+RUN yarn global add @angular/cli
 RUN yarn install --silent
 
 # Stage 2: Сборка проекта
