@@ -23,9 +23,11 @@
     "useDefineForClassFields": false,
     "lib": ["ES2022", "dom"],
     "paths": {
+      "@components/*":["./src/app/core/components/*"],
+      "@animations/*": ["./src/common/animations/*"],
       "@interfaces/*": ["./src/common/interfaces/*"],
       "@services/*": ["./src/app/core/services/*"],
-      "@components/*":["./src/app/core/components/*"],
+      "@guards/*": ["./src/app/core/guards/*"],
       "@models/*": ["./src/common/models/*"],
       "@enums/*": ["./src/common/enums/*"],
       "@styles/*": ["./src/styles/*"],

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 
 import { TelegramUser, User } from '@models/user'
+import { Router } from '@angular/router'
 import { API } from '@enums/api'
 
 import { environment } from 'src/environments/environment'
@@ -11,7 +12,7 @@ import { environment } from 'src/environments/environment'
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.user$$ = new BehaviorSubject<User | null>(null)
   }
 
@@ -34,6 +35,7 @@ export class AuthService {
             },
             {
               responseType: 'json',
+              withCredentials: true,
             },
           )
           .pipe(
@@ -69,5 +71,27 @@ export class AuthService {
           )
       }
     }
+  }
+
+  public check(returnUrl?: string) {
+    return this.http
+      .get<User>(environment.API_URL + API.AUTH_ME, {
+        withCredentials: true,
+      })
+      .pipe(
+        map((user) => {
+          this.user$$.next(user)
+          return true
+        }),
+        catchError(() => {
+          return of(
+            this.router.createUrlTree(['/sign-in'], {
+              queryParams: {
+                returnUrl,
+              },
+            }),
+          )
+        }),
+      )
   }
 }

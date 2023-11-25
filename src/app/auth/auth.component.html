@@ -1,5 +1,5 @@
 <!-- #TODO: Получать имя бота с сервера -->
-<div class="app-auth-container">
+<div class="app-auth-container" @inOutComponent>
   <img src="assets/svg/logo-v.svg" />
   <div>
     <span class="app-auth__title">Welcome</span>
@@ -13,7 +13,7 @@
       *ngIf="isDev"
       class="app-auth__sign-in"
       mat-button
-      (click)="this.mockLoginHandler()"
+      (click)="this.loginHandler(this.mockUser, true)"
     >
       Sign in
     </button>
