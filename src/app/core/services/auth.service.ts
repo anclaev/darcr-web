@@ -25,9 +25,17 @@ export class AuthService {
     switch (isDev) {
       case false: {
         return this.http
-          .post<User>(environment.API_URL + API.AUTH_SIGN_IN, user, {
-            responseType: 'json',
-          })
+          .post<User>(
+            environment.API_URL + API.AUTH_SIGN_IN,
+            {
+              ...user,
+              auth_date: user.auth_date?.toString(),
+              id: user.id.toString(),
+            },
+            {
+              responseType: 'json',
+            },
+          )
           .pipe(
             map((data) => {
               this.user$$.next(data)
@@ -42,9 +50,17 @@ export class AuthService {
 
       case true: {
         return this.http
-          .post<User>(environment.API_URL + API.AUTH_SIGN_IN, user, {
-            responseType: 'json',
-          })
+          .post<User>(
+            environment.API_URL + API.AUTH_SIGN_IN,
+            {
+              ...user,
+              auth_date: user.auth_date?.toString(),
+              id: user.id.toString(),
+            },
+            {
+              responseType: 'json',
+            },
+          )
           .pipe(
             map((data) => {
               this.user$$.next(data)
