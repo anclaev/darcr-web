@@ -25,7 +25,8 @@
     "paths": {
       "@interfaces/*": ["./src/common/interfaces/*"],
       "@services/*": ["./src/app/core/services/*"],
-      "@enums/*": ["./src/common/enums/*"]
+      "@enums/*": ["./src/common/enums/*"],
+      "@styles/*": ["./src/styles/*"]
     }
   },
   "angularCompilerOptions": {

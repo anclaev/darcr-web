@@ -1,14 +1,54 @@
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router'
-import { Component, OnDestroy } from '@angular/core'
+import {
+  ActivatedRoute,
+  NavigationEnd,
+  Router,
+  RouterOutlet,
+} from '@angular/router'
+
+import {
+  APP_INITIALIZER,
+  Component,
+  ErrorHandler,
+  OnDestroy,
+} from '@angular/core'
+
 import { Title } from '@angular/platform-browser'
 import { Subscription, filter, map } from 'rxjs'
+import * as Sentry from '@sentry/angular-ivy'
+
+import { HttpClientModule } from '@angular/common/http'
+import { CommonModule } from '@angular/common'
+
+import { environment } from 'src/environments/environment'
 
 import { ConfigService } from '@services/config.service'
+
+import { CoreModule } from './core/core.module'
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.sass',
+  standalone: true,
+  imports: [CommonModule, HttpClientModule, RouterOutlet, CoreModule],
+  providers: [
+    {
+      provide: ErrorHandler,
+      useValue: Sentry.createErrorHandler({
+        showDialog: environment.ENV === 'development',
+      }),
+    },
+    {
+      provide: Sentry.TraceService,
+      deps: [Router],
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: () => () => {},
+      deps: [Sentry.TraceService],
+      multi: true,
+    },
+  ],
 })
 export class AppComponent implements OnDestroy {
   constructor(

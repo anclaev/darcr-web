@@ -1,0 +1,43 @@
+@use "@angular/material" as mat;
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css");
+@import "./_vars.sass";
+
+@include mat.core();
+
+$darcr-web-primary: mat.define-palette(mat.$indigo-palette);
+$darcr-web-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$darcr-web-warn: mat.define-palette(mat.$red-palette);
+$darcr-web-font-family: "Montserrat";
+
+$darcr-web-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $darcr-web-primary,
+      accent: $darcr-web-accent,
+      warn: $darcr-web-warn
+    ),
+    typography:
+      mat.define-typography-config(
+        $font-family: $darcr-web-font-family
+      )
+  )
+);
+
+@include mat.all-component-themes($darcr-web-theme);
+
+html,
+body {
+  height: 100%;
+  font-family: $darcr-web-font-family;
+  background: $bg-color;
+  color: $font-color;
+}
+
+body {
+  margin: 0;
+}
+
+main {
+  min-height: 100vh;
+}
