@@ -33,9 +33,14 @@ export class AuthComponent {
       .pipe(first())
       .subscribe({
         next: (data) => {
-          this.toastService.show(
-            `Hi, ${data.username ? data.username : data.id}!`,
-          )
+          let name = data.first_name
+            ? data.first_name
+            : data.username
+            ? data.username
+            : data.id
+
+          console.log(data)
+          this.toastService.show(`Hi, ${name}!`)
         },
       })
   }
