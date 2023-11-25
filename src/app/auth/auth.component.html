@@ -13,7 +13,7 @@
       *ngIf="isDev"
       class="app-auth__sign-in"
       mat-button
-      (click)="this.mockLoginHandler()"
+      (click)="this.loginHandler(this.mockUser, true)"
     >
       Sign in
     </button>

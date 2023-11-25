@@ -1,3 +1,4 @@
+import { ActivatedRoute, Router } from '@angular/router'
 import { Component } from '@angular/core'
 import { first } from 'rxjs'
 
@@ -16,20 +17,36 @@ import { environment } from 'src/environments/environment'
 })
 export class AuthComponent {
   constructor(
-    private authService: AuthService,
     private toastService: ToastService,
-  ) {}
+    private authService: AuthService,
+    private route: ActivatedRoute,
+    private router: Router,
+  ) {
+    if (this.authService.currentUser) {
+      this.router.navigate(['/'])
+    }
+
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/'
+  }
 
   public isDev: boolean = environment.ENV === 'development'
+
+  private returnUrl: string = '/'
 
   public botConfig: WidgetConfiguration = {
     buttonStyle: 'large',
     showUserPhoto: false,
   }
 
-  loginHandler(data: any) {
+  public mockUser: TelegramUser = {
+    id: '777',
+    username: 'test',
+    hash: 'aefauefg24uf2',
+  }
+
+  loginHandler(data: any, isDev?: boolean) {
     this.authService
-      .signIn(data as TelegramUser)
+      .signIn(data as TelegramUser, isDev)
       .pipe(first())
       .subscribe({
         next: (data) => {
@@ -39,28 +56,8 @@ export class AuthComponent {
             ? data.username
             : data.id
 
-          console.log(data)
           this.toastService.show(`Hi, ${name}!`)
-        },
-      })
-  }
-
-  mockLoginHandler() {
-    this.authService
-      .signIn(
-        {
-          id: '777',
-          username: 'test',
-          hash: 'aefauefg24uf2',
-        },
-        this.isDev,
-      )
-      .pipe(first())
-      .subscribe({
-        next: (data) => {
-          this.toastService.show(
-            `Hi, ${data.username ? data.username : data.id}!`,
-          )
+          this.router.navigate([this.returnUrl])
         },
       })
   }

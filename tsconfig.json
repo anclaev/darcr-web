@@ -26,6 +26,7 @@
       "@interfaces/*": ["./src/common/interfaces/*"],
       "@services/*": ["./src/app/core/services/*"],
       "@components/*":["./src/app/core/components/*"],
+      "@guards/*": ["./src/app/core/guards/*"],
       "@models/*": ["./src/common/models/*"],
       "@enums/*": ["./src/common/enums/*"],
       "@styles/*": ["./src/styles/*"],
