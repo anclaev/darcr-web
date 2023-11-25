@@ -1,11 +1,10 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 
-import { AuthService } from '@services/auth.service'
 import { ConfigService } from '@services/config.service'
+import { AuthService } from '@services/auth.service'
 
 @NgModule({
-  declarations: [],
   providers: [ConfigService, AuthService],
   imports: [CommonModule],
 })

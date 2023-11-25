@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core'
 import { environment } from 'src/environments/environment'
 
 import { IConfig, INITIAL_CONFIG } from '@interfaces/config'
-import { tap } from 'rxjs'
+import { API } from '@enums/api'
 
 @Injectable({
   providedIn: 'root',
@@ -13,14 +13,17 @@ export class ConfigService {
   constructor(private http: HttpClient) {
     this.CONFIG = INITIAL_CONFIG
     this.API_URL = environment.API_URL
+    this.isProduction = environment.ENV === 'production'
   }
 
   private CONFIG: IConfig
   private API_URL: string
 
-  public loadConfig() {
+  public isProduction: boolean
+
+  public loadToken() {
     return this.http
-      .get(`${this.API_URL}auth/token`, {
+      .get(`${this.API_URL}${API.AUTH_TOKEN}`, {
         responseType: 'text',
       })
       .subscribe({
@@ -28,12 +31,10 @@ export class ConfigService {
           this.CONFIG.TELEGRAM_TOKEN = data
         },
         complete: () => {
-          console.log('Config loaded.')
-          alert('Config is loading!')
+          if (!this.isProduction) console.log('Token successfully loaded.')
         },
-        error: () => {
-          console.log('Config loading is failed.')
-          alert('Config loading is failed.')
+        error: (e) => {
+          console.log('Token loading is failed:', e)
         },
       })
   }
