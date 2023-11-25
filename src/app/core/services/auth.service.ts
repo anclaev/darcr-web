@@ -35,7 +35,7 @@ export class AuthService {
             },
             {
               responseType: 'json',
-              withCredentials: true,
+              reportProgress: true,
             },
           )
           .pipe(
@@ -74,24 +74,20 @@ export class AuthService {
   }
 
   public check(returnUrl?: string) {
-    return this.http
-      .get<User>(environment.API_URL + API.AUTH_ME, {
-        withCredentials: true,
-      })
-      .pipe(
-        map((user) => {
-          this.user$$.next(user)
-          return true
-        }),
-        catchError(() => {
-          return of(
-            this.router.createUrlTree(['/sign-in'], {
-              queryParams: {
-                returnUrl,
-              },
-            }),
-          )
-        }),
-      )
+    return this.http.get<User>(environment.API_URL + API.AUTH_ME).pipe(
+      map((user) => {
+        this.user$$.next(user)
+        return true
+      }),
+      catchError(() => {
+        return of(
+          this.router.createUrlTree(['/sign-in'], {
+            queryParams: {
+              returnUrl,
+            },
+          }),
+        )
+      }),
+    )
   }
 }
