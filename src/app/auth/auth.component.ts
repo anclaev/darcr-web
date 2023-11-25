@@ -1,6 +1,9 @@
 import { Component } from '@angular/core'
+import { first } from 'rxjs'
 
 import { WidgetConfiguration } from '@components/telegram-login/telegram-login.component'
+
+import { ToastService } from '@services/toast.service'
 import { AuthService } from '@services/auth.service'
 import { TelegramUser } from '@models/user'
 
@@ -12,7 +15,10 @@ import { environment } from 'src/environments/environment'
   styleUrl: './auth.component.sass',
 })
 export class AuthComponent {
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private toastService: ToastService,
+  ) {}
 
   public isDev: boolean = environment.ENV === 'development'
 
@@ -21,7 +27,36 @@ export class AuthComponent {
     showUserPhoto: false,
   }
 
-  loginHandler(data: TelegramUser) {
-    this.authService.signIn(data)
+  loginHandler(data: any) {
+    this.authService
+      .signIn(data as TelegramUser)
+      .pipe(first())
+      .subscribe({
+        next: (data) => {
+          this.toastService.show(
+            `Hi, ${data.username ? data.username : data.id}!`,
+          )
+        },
+      })
+  }
+
+  mockLoginHandler() {
+    this.authService
+      .signIn(
+        {
+          id: '777',
+          username: 'test',
+          hash: 'aefauefg24uf2',
+        },
+        this.isDev,
+      )
+      .pipe(first())
+      .subscribe({
+        next: (data) => {
+          this.toastService.show(
+            `Hi, ${data.username ? data.username : data.id}!`,
+          )
+        },
+      })
   }
 }

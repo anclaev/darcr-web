@@ -7,7 +7,15 @@
       *ngIf="!this.isDev"
       botName="DarcrBot"
       [config]="botConfig"
+      (login)="this.loginHandler($event)"
     ></app-telegram-login>
-    <button *ngIf="isDev" class="app-auth__sign-in" mat-button>Sign in</button>
+    <button
+      *ngIf="isDev"
+      class="app-auth__sign-in"
+      mat-button
+      (click)="this.mockLoginHandler()"
+    >
+      Sign in
+    </button>
   </div>
 </div>
