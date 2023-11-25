@@ -32,7 +32,8 @@
               "src/favicon.ico",
               "src/site.webmanifest",
               "src/browserconfig.xml",
-              "src/assets/fav"
+              "src/assets/fav",
+              "src/assets/svg"
             ],
             "styles": ["src/styles/theme.scss"],
             "scripts": []
@@ -95,7 +96,8 @@
               "src/favicon.ico",
               "src/site.webmanifest",
               "src/browserconfig.xml",
-              "src/assets/fav"
+              "src/assets/fav",
+              "src/assets/svg"
             ],
             "styles": ["src/styles/theme.scss"],
             "scripts": []

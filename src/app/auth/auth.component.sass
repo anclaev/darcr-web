@@ -1,1 +1,27 @@
+:host
+    position: relative
+    flex-grow: 1
 
+.app-auth
+    &-container
+        position: absolute
+        justify-content: space-between
+        top: 40%
+        left: 0
+        right: 0
+        transform: translateY(-50%)
+        width: 90%
+        max-width: 584px
+        margin: 0 auto
+
+        &, & > div
+            display: flex
+
+        & > div
+            flex-direction: column
+            justify-content: space-around
+
+    &__title
+        font-size: 36px
+        font-weight: 300
+        letter-spacing: 19.2px

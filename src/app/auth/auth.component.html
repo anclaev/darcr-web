@@ -1,1 +1,11 @@
-<section>Auth</section>
+<!-- #TODO: Получать имя бота с сервера -->
+<div class="app-auth-container">
+  <img src="assets/svg/logo-v.svg" />
+  <div>
+    <span class="app-auth__title">Welcome</span>
+    <app-telegram-login
+      botName="DarcrBot"
+      [config]="botConfig"
+    ></app-telegram-login>
+  </div>
+</div>
