@@ -1,34 +1,54 @@
-import { HttpClientModule } from '@angular/common/http'
-import { Component, OnDestroy, OnInit } from '@angular/core'
-import { CommonModule } from '@angular/common'
-import { RouterOutlet } from '@angular/router'
-import { Subscription } from 'rxjs'
-
-import { CoreModule } from './core/core.module'
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router'
+import { Component, OnDestroy } from '@angular/core'
+import { Title } from '@angular/platform-browser'
+import { Subscription, filter, map } from 'rxjs'
 
 import { ConfigService } from '@services/config.service'
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [CommonModule, HttpClientModule, RouterOutlet, CoreModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.sass',
 })
-export class AppComponent implements OnInit, OnDestroy {
-  constructor(private config: ConfigService) {
-    this.configLoading$$ = new Subscription()
+export class AppComponent implements OnDestroy {
+  constructor(
+    private configService: ConfigService,
+    private titleService: Title,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+  ) {
+    this.configLoading$$ = this.configService.loadToken()
+    this.routerEvents$$ = this.router.events
+      .pipe(
+        filter((event) => event instanceof NavigationEnd),
+        map((event) => {
+          let child = this.activatedRoute.firstChild
+
+          while (child) {
+            if (child.firstChild) child = child.firstChild
+            else if ('title' in child.snapshot.data)
+              return {
+                event,
+                title: child.snapshot.data['title'],
+              }
+            else return { event, title: null }
+          }
+
+          return { event, title: null }
+        }),
+      )
+      .subscribe((data: any) => {
+        if (data.title) this.titleService.setTitle(data.title)
+      })
   }
 
   title = 'Darcr'
 
   private configLoading$$: Subscription
-
-  ngOnInit(): void {
-    this.configLoading$$ = this.config.loadConfig()
-  }
+  private routerEvents$$: Subscription
 
   ngOnDestroy(): void {
     this.configLoading$$.unsubscribe()
+    this.routerEvents$$.unsubscribe()
   }
 }
