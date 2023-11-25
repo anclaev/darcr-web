@@ -4,6 +4,7 @@ import { first } from 'rxjs'
 
 import { WidgetConfiguration } from '@components/telegram-login/telegram-login.component'
 
+import { inOutComponentAnimation } from '@animations/in-out-component'
 import { ToastService } from '@services/toast.service'
 import { AuthService } from '@services/auth.service'
 import { TelegramUser } from '@models/user'
@@ -14,6 +15,7 @@ import { environment } from 'src/environments/environment'
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrl: './auth.component.sass',
+  animations: [inOutComponentAnimation],
 })
 export class AuthComponent {
   constructor(
