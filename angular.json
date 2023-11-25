@@ -34,7 +34,7 @@
               "src/browserconfig.xml",
               "src/assets/fav"
             ],
-            "styles": ["src/index.sass"],
+            "styles": ["src/styles/theme.scss"],
             "scripts": []
           },
           "configurations": {
@@ -97,7 +97,7 @@
               "src/browserconfig.xml",
               "src/assets/fav"
             ],
-            "styles": ["src/index.sass"],
+            "styles": ["src/styles/theme.scss"],
             "scripts": []
           }
         }
