@@ -43,3 +43,8 @@ main {
   flex-direction: column;
   min-height: 100vh;
 }
+
+button {
+  color: $font-color !important;
+  font-weight: 400 !important;
+}

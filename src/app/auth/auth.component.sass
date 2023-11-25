@@ -4,6 +4,7 @@
 
 .app-auth
     &-container
+        user-select: none
         position: absolute
         justify-content: space-between
         top: 40%
@@ -14,14 +15,40 @@
         max-width: 584px
         margin: 0 auto
 
+        & > img
+            max-width: 142px
+
         &, & > div
             display: flex
 
         & > div
             flex-direction: column
             justify-content: space-around
+            align-items: center
 
     &__title
         font-size: 36px
         font-weight: 300
         letter-spacing: 19.2px
+
+    &__sign-in
+        padding: 5px 30px
+        border: 1px solid #fff
+
+@media (max-width: 600px)
+    .app-auth
+        &-container
+            flex-direction: column
+            align-items: center
+
+            & > img
+                max-width: 100px
+                margin: 0 0 40px 4px
+
+        &__title
+            font-size: 24px
+            letter-spacing: 3px
+            margin: 0 0 15px 0px
+
+        &__sign-in
+            width: 100%

@@ -21,20 +21,37 @@ export class AuthService {
     return this.user$$.value
   }
 
-  public signIn(user: TelegramUser): Observable<User> {
-    return this.http
-      .post<User>(environment.API_URL + API.AUTH_SIGN_IN, user, {
-        withCredentials: true,
-      })
-      .pipe(
-        map((data) => {
-          this.user$$.next(data)
-          return data
-        }),
-        catchError((e) => {
-          console.log('Sign in failed: ', e)
-          return of(e)
-        }),
-      )
+  public signIn(user: TelegramUser, isDev: boolean = false): Observable<User> {
+    switch (isDev) {
+      case false: {
+        return this.http
+          .post<User>(environment.API_URL + API.AUTH_SIGN_IN, user, {
+            responseType: 'json',
+          })
+          .pipe(
+            map((data) => {
+              this.user$$.next(data)
+              return data
+            }),
+            catchError((e) => {
+              console.log('Sign in failed: ', e)
+              return of(e)
+            }),
+          )
+      }
+
+      case true: {
+        return this.http
+          .post<User>(environment.API_URL + API.AUTH_SIGN_IN, user, {
+            responseType: 'json',
+          })
+          .pipe(
+            map((data) => {
+              this.user$$.next(data)
+              return data
+            }),
+          )
+      }
+    }
   }
 }
