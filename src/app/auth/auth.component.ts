@@ -42,7 +42,7 @@ export class AuthComponent {
 
   public mockUser: TelegramUser = {
     id: '777',
-    username: 'test',
+    username: 'Artem',
     hash: 'aefauefg24uf2',
   }
 

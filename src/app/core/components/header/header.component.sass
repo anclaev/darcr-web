@@ -1,0 +1,60 @@
+@import "../../../../styles/_vars"
+
+.container, .user, .geo
+    display: flex
+    align-items: center
+
+.container
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+    letter-spacing: 0.91px
+    font-size: 14px
+
+    justify-content: space-between
+    margin: 20px
+    padding: 15px
+    background-color: $bg-color
+    border-radius: 10px
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25)
+    user-select: none
+
+    --avatar-size: 30px
+
+.geo
+    padding-left: 25px
+    background-image: url("/assets/svg/geo.svg")
+    background-position: left
+    background-repeat: no-repeat
+    transition: .2s
+    min-height: 20px
+
+    &:hover
+        letter-spacing: 3px
+
+.user
+
+    &:hover
+        & > .user__avatar
+            border-color: $primary-color
+
+    &__avatar
+        width: var(--avatar-size)
+        height: var(--avatar-size)
+        border-radius: 50%
+        background-image: var(--avatar)
+        background-position: center center
+        background-size: cover
+        margin-right: 15px
+        border: 2px solid $bg-color
+
+        transition: .3s
+
+.logo, .geo, .user
+    cursor: pointer
+
+@media screen and ( max-width:  768px)
+    .container
+        font-size: 12px
+        --avatar-size: 20px
+
+    .user__avatar
+        margin-right: 10px
