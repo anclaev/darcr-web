@@ -1,0 +1,15 @@
+<header class="container">
+  <div class="logo">
+    <img src="assets/svg/logo.svg" alt="Logo: Drcar" routerLink="/" />
+  </div>
+  <div class="geo">
+    {{ currentCity }}
+  </div>
+  <div class="user">
+    <div
+      class="user__avatar"
+      [style]="'--avatar: url(' + user.avatar + ')'"
+    ></div>
+    {{ user.login }}
+  </div>
+</header>

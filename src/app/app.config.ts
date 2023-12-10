@@ -1,11 +1,12 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { ApplicationConfig, importProvidersFrom } from '@angular/core'
+import { AngularYandexMapsModule } from 'angular8-yandex-maps'
+import { HttpClientModule } from '@angular/common/http'
 import { provideRouter } from '@angular/router'
 
 import { authGuard } from '@guards/auth.guard'
 
 import { Routes } from '@interfaces/route'
-import { HttpClientModule } from '@angular/common/http'
 
 const APP_ROUTES: Routes = [
   {

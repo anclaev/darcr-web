@@ -33,7 +33,8 @@
               "src/site.webmanifest",
               "src/browserconfig.xml",
               "src/assets/fav",
-              "src/assets/svg"
+              "src/assets/svg",
+              "src/assets/images"
             ],
             "styles": ["src/styles/theme.scss"],
             "scripts": []
@@ -97,7 +98,8 @@
               "src/site.webmanifest",
               "src/browserconfig.xml",
               "src/assets/fav",
-              "src/assets/svg"
+              "src/assets/svg",
+              "src/assets/images"
             ],
             "styles": ["src/styles/theme.scss"],
             "scripts": []

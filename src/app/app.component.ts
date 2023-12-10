@@ -28,7 +28,6 @@ import { CoreModule } from './core/core.module'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.sass',
   standalone: true,
   imports: [CommonModule, HttpClientModule, RouterOutlet, CoreModule],
   providers: [

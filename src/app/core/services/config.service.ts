@@ -38,4 +38,8 @@ export class ConfigService {
         },
       })
   }
+
+  get yandexApiKey() {
+    return this.CONFIG.YANDEX_API_KEY
+  }
 }
